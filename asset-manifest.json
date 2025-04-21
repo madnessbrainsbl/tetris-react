@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/madnessbrainsbl/tetris-react/static/css/main.9384d89d.css",
+    "main.js": "/madnessbrainsbl/tetris-react/static/js/main.868271e0.js",
+    "static/media/fashion_neon.jpeg": "/madnessbrainsbl/tetris-react/static/media/fashion_neon.ce9150f084a306040a48.jpeg",
+    "static/media/art_flowers.jpeg": "/madnessbrainsbl/tetris-react/static/media/art_flowers.38bffd156a7c3244bbcb.jpeg",
+    "static/media/art_ear.jpeg": "/madnessbrainsbl/tetris-react/static/media/art_ear.c020e5249484479532de.jpeg",
+    "static/media/art_ocean.png": "/madnessbrainsbl/tetris-react/static/media/art_ocean.dea90c2c57d84fbeb195.png",
+    "static/media/fashion_winter.jpeg": "/madnessbrainsbl/tetris-react/static/media/fashion_winter.a98a90cf562e7df2e88c.jpeg",
+    "static/media/art_surreal.jpeg": "/madnessbrainsbl/tetris-react/static/media/art_surreal.28e4e5d1cc05dc8c8aab.jpeg",
+    "index.html": "/madnessbrainsbl/tetris-react/index.html",
+    "main.9384d89d.css.map": "/madnessbrainsbl/tetris-react/static/css/main.9384d89d.css.map",
+    "main.868271e0.js.map": "/madnessbrainsbl/tetris-react/static/js/main.868271e0.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.9384d89d.css",
+    "static/js/main.868271e0.js"
+  ]
+}
