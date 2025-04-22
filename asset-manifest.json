@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/tetris-react/static/css/main.9384d89d.css",
-    "main.js": "/tetris-react/static/js/main.3a1dc974.js",
-    "static/media/fashion_neon.jpeg": "/tetris-react/static/media/fashion_neon.ce9150f084a306040a48.jpeg",
-    "static/media/art_flowers.jpeg": "/tetris-react/static/media/art_flowers.38bffd156a7c3244bbcb.jpeg",
-    "static/media/art_ear.jpeg": "/tetris-react/static/media/art_ear.c020e5249484479532de.jpeg",
-    "static/media/art_ocean.png": "/tetris-react/static/media/art_ocean.dea90c2c57d84fbeb195.png",
-    "static/media/fashion_winter.jpeg": "/tetris-react/static/media/fashion_winter.a98a90cf562e7df2e88c.jpeg",
-    "static/media/art_surreal.jpeg": "/tetris-react/static/media/art_surreal.28e4e5d1cc05dc8c8aab.jpeg",
-    "index.html": "/tetris-react/index.html",
-    "main.9384d89d.css.map": "/tetris-react/static/css/main.9384d89d.css.map",
-    "main.3a1dc974.js.map": "/tetris-react/static/js/main.3a1dc974.js.map"
+    "main.css": "/%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D1%80%D0%B5%D0%BF%D0%BE%D0%B7%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D1%8F/static/css/main.9384d89d.css",
+    "main.js": "/%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D1%80%D0%B5%D0%BF%D0%BE%D0%B7%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D1%8F/static/js/main.1ad016e5.js",
+    "static/media/fashion_neon.jpeg": "/%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D1%80%D0%B5%D0%BF%D0%BE%D0%B7%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D1%8F/static/media/fashion_neon.ce9150f084a306040a48.jpeg",
+    "static/media/art_flowers.jpeg": "/%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D1%80%D0%B5%D0%BF%D0%BE%D0%B7%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D1%8F/static/media/art_flowers.38bffd156a7c3244bbcb.jpeg",
+    "static/media/art_ear.jpeg": "/%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D1%80%D0%B5%D0%BF%D0%BE%D0%B7%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D1%8F/static/media/art_ear.c020e5249484479532de.jpeg",
+    "static/media/art_ocean.png": "/%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D1%80%D0%B5%D0%BF%D0%BE%D0%B7%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D1%8F/static/media/art_ocean.dea90c2c57d84fbeb195.png",
+    "static/media/fashion_winter.jpeg": "/%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D1%80%D0%B5%D0%BF%D0%BE%D0%B7%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D1%8F/static/media/fashion_winter.a98a90cf562e7df2e88c.jpeg",
+    "static/media/art_surreal.jpeg": "/%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D1%80%D0%B5%D0%BF%D0%BE%D0%B7%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D1%8F/static/media/art_surreal.28e4e5d1cc05dc8c8aab.jpeg",
+    "index.html": "/%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D1%80%D0%B5%D0%BF%D0%BE%D0%B7%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D1%8F/index.html",
+    "main.9384d89d.css.map": "/%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D1%80%D0%B5%D0%BF%D0%BE%D0%B7%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D1%8F/static/css/main.9384d89d.css.map",
+    "main.1ad016e5.js.map": "/%D0%BD%D0%B0%D0%B7%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-%D1%80%D0%B5%D0%BF%D0%BE%D0%B7%D0%B8%D1%82%D0%BE%D1%80%D0%B8%D1%8F/static/js/main.1ad016e5.js.map"
   },
   "entrypoints": [
     "static/css/main.9384d89d.css",
-    "static/js/main.3a1dc974.js"
+    "static/js/main.1ad016e5.js"
   ]
 }
