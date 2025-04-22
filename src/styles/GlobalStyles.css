@@ -1,0 +1,167 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Courier New', monospace;
+  background-color: #000;
+  overflow: hidden;
+}
+
+@font-face {
+  font-family: 'Glitch';
+  src: url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+}
+
+.text-glitch {
+  position: relative;
+  display: inline-block;
+}
+
+.text-glitch::before,
+.text-glitch::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.text-glitch::before {
+  left: 2px;
+  text-shadow: -1px 0 #00ffff;
+  animation: glitch-anim-1 2s infinite linear alternate-reverse;
+}
+
+.text-glitch::after {
+  left: -2px;
+  text-shadow: 1px 0 #ff00ff;
+  animation: glitch-anim-2 3s infinite linear alternate-reverse;
+}
+
+@keyframes glitch-anim-1 {
+  0% { clip-path: inset(20% 0 80% 0); }
+  20% { clip-path: inset(60% 0 40% 0); }
+  40% { clip-path: inset(40% 0 60% 0); }
+  60% { clip-path: inset(80% 0 20% 0); }
+  80% { clip-path: inset(10% 0 90% 0); }
+  100% { clip-path: inset(30% 0 70% 0); }
+}
+
+@keyframes glitch-anim-2 {
+  0% { clip-path: inset(10% 0 90% 0); }
+  20% { clip-path: inset(30% 0 70% 0); }
+  40% { clip-path: inset(50% 0 50% 0); }
+  60% { clip-path: inset(70% 0 30% 0); }
+  80% { clip-path: inset(90% 0 10% 0); }
+  100% { clip-path: inset(5% 0 95% 0); }
+}
+
+/* Scanlines effect */
+.scanlines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.15),
+    rgba(0, 0, 0, 0.15) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  pointer-events: none;
+  z-index: 100;
+}
+
+/* Vignette effect */
+.vignette {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at center,
+    transparent 0%,
+    rgba(0, 0, 0, 0.7) 100%
+  );
+  pointer-events: none;
+  z-index: 99;
+}
+
+/* RGB split effect */
+.rgb-split {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.03),
+    rgba(0, 0, 255, 0.03)
+  );
+  mix-blend-mode: screen;
+  pointer-events: none;
+  z-index: 98;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .tetris-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .game-info {
+    margin-top: 20px;
+    margin-left: 0;
+  }
+}
+
+/* Animation for glitch effect */
+@keyframes glitch {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+/* Photographer credit */
+.photographer-credit {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  z-index: 101;
+}
+
+.photographer-credit a {
+  color: rgba(0, 255, 0, 0.7);
+  text-decoration: none;
+  transition: all 0.3s;
+}
+
+.photographer-credit a:hover {
+  color: rgba(0, 255, 0, 1);
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.5);
+}
