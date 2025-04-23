@@ -59,6 +59,7 @@ yarn build
 - **Space**: Instant drop
 - **P**: Pause/Resume game
 
-## License
+## Screenshot
+![image](https://github.com/user-attachments/assets/f1c1d174-f8e7-4622-a214-97610a512fcf)
+![image](https://github.com/user-attachments/assets/a4f69243-be20-4ee8-892f-9817d3ac581b)
 
-MIT
