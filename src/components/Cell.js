@@ -13,16 +13,32 @@ const StyledCell = styled.div`
   width: auto;
   aspect-ratio: 1 / 1;
   background: rgba(${(props) => props.color}, 0.8);
-  border: ${(props) => (props.type === 0 ? "0px solid" : "4px solid")};
-  border-bottom-color: rgba(${(props) => props.color}, 0.1);
-  border-right-color: rgba(${(props) => props.color}, 1);
-  border-top-color: rgba(${(props) => props.color}, 1);
-  border-left-color: rgba(${(props) => props.color}, 0.3);
+  border: ${(props) =>
+    props.type === 0 ? "none" : "1px solid rgba(" + props.color + ", 1)"};
+  box-shadow: ${(props) =>
+    props.type === 0
+      ? "none"
+      : `inset 3px 3px 0 rgba(${props.color}, 1), 
+         inset -3px -3px 0 rgba(${props.color}, 0.2)`};
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   animation: ${(props) => (props.exploding ? explodeAnimation : "none")} 0.2s
     infinite;
   z-index: ${(props) => (props.exploding ? 20 : 1)};
+  box-sizing: border-box;
+  margin: 1px;
+
+  /* Стили для десктопной версии - reverted */
+  /* @media (min-width: 1201px) {
+    margin: 1px;
+    border: ${(props) =>
+    props.type === 0 ? "none" : "1px solid rgba(255, 255, 255, 0.1)"};
+    box-shadow: ${(props) =>
+    props.type === 0
+      ? "none"
+      : `inset 4px 4px 0 rgba(${props.color}, 1), 
+           inset -4px -4px 0 rgba(${props.color}, 0.3)`};
+  } */
 
   &::before {
     content: "";

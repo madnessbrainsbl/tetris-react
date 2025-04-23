@@ -14,6 +14,12 @@ const StyledTetrisWrapper = styled.div`
   overflow: hidden;
   position: relative;
 
+  /* @media (max-width: 769px) {
+    overflow: visible;
+    height: auto;
+    min-height: 100vh;
+  } - reverted */
+
   &::before {
     content: "";
     position: absolute;
@@ -91,13 +97,28 @@ const StageContainer = styled.div`
   justify-content: flex-end;
   align-items: center;
   margin-right: 30px;
+  height: auto;
+  position: relative;
+  z-index: 4;
+
+  /* Стили для десктопной версии - reverted */
+  /* @media (min-width: 1201px) {
+    padding-bottom: 0;
+    margin-bottom: 0;
+    justify-content: center;
+    align-items: center;
+    height: auto;
+    overflow: visible;
+  } */
 
   /* МОБИЛЬНАЯ ВЕРСИЯ - контейнер игрового поля */
   @media (max-width: 769px) {
     justify-content: stretch;
     margin-right: -100px;
     position: relative;
-    top: -50px;
+    top: 0;
+    margin-bottom: 120px;
+    /* padding-bottom: 150px; - reverted */
   }
 `;
 
@@ -118,9 +139,11 @@ const AsideContainer = styled.div`
     width: 100%;
     background: rgba(0, 0, 0, 0.8);
     margin: 0;
-    padding: 10px 5px;
+    padding: 20px 5px;
     z-index: 10;
     justify-content: center;
+    /* border-top: 2px solid #333; - reverted */
+    /* box-shadow: 0 -5px 20px rgba(0, 255, 0, 0.3); - reverted */
   }
 `;
 

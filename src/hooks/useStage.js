@@ -30,7 +30,7 @@ export const useStage = (player, resetPlayer) => {
           newStage[rowIndex] = newStage[rowIndex].map((cell) => [
             cell[0],
             "exploding",
-            "255, 255, 255",
+            "255, 0, 0",
             null,
           ]);
         });
@@ -59,7 +59,7 @@ export const useStage = (player, resetPlayer) => {
           }, []);
 
           setStage(clearedStage);
-        }, 400); // Delay before sweeping rows - longer to make explosion more visible
+        }, 1200); // Increased delay to make explosion more visible
 
         return newStage; // Return with explosion effect first
       }
@@ -72,9 +72,6 @@ export const useStage = (player, resetPlayer) => {
       // If it says "clear" but doesn't have a 0 it means that it's the players move and should be cleared
       const newStage = prevStage.map((row) =>
         row.map((cell) => {
-          // Keep exploding cells as is for animation
-          if (cell[1] === "exploding") return cell;
-          // Clear normal cells
           return cell[1] === "clear" ? [0, "clear", "0, 0, 0", null] : cell;
         })
       );
@@ -87,10 +84,12 @@ export const useStage = (player, resetPlayer) => {
             const tetrominoColor = getTetrominoColor(tetrominoType);
             const tetrominoImage = getTetrominoImage(tetrominoType);
 
-            // Check if we're within the stage boundaries before updating
+            // Calculate position on the stage
             const newY = y + player.pos.y;
             const newX = x + player.pos.x;
 
+            // Обеспечиваем, что фигура не выйдет за границы поля
+            // Проверяем, что координаты находятся в пределах игрового поля
             if (
               newY >= 0 &&
               newY < newStage.length &&
