@@ -14,12 +14,6 @@ const StyledTetrisWrapper = styled.div`
   overflow: hidden;
   position: relative;
 
-  /* @media (max-width: 769px) {
-    overflow: visible;
-    height: auto;
-    min-height: 100vh;
-  } - reverted */
-
   &::before {
     content: "";
     position: absolute;
@@ -66,7 +60,7 @@ const StyledTetris = styled.div`
   position: relative;
   z-index: 3;
 
-  /* МОБИЛЬНАЯ ВЕРСИЯ - основной контейнер */
+  /* MOBILE VERSION - main container */
   @media (max-width: 769px) {
     padding: 10px;
     width: 100vw;
@@ -83,7 +77,7 @@ const ContentContainer = styled.div`
   gap: 0;
   justify-content: center;
 
-  /* МОБИЛЬНАЯ ВЕРСИЯ - контейнер контента */
+  /* MOBILE VERSION - content container */
   @media (max-width: 769px) {
     flex-direction: column;
     gap: 0;
@@ -101,24 +95,13 @@ const StageContainer = styled.div`
   position: relative;
   z-index: 4;
 
-  /* Стили для десктопной версии - reverted */
-  /* @media (min-width: 1201px) {
-    padding-bottom: 0;
-    margin-bottom: 0;
-    justify-content: center;
-    align-items: center;
-    height: auto;
-    overflow: visible;
-  } */
-
-  /* МОБИЛЬНАЯ ВЕРСИЯ - контейнер игрового поля */
+  /* MOBILE VERSION - game board container */
   @media (max-width: 769px) {
     justify-content: stretch;
     margin-right: -100px;
     position: relative;
     top: 0;
     margin-bottom: 120px;
-    /* padding-bottom: 150px; - reverted */
   }
 `;
 
@@ -131,7 +114,7 @@ const AsideContainer = styled.div`
   padding: 0;
   margin-left: -20px;
 
-  /* МОБИЛЬНАЯ ВЕРСИЯ - контейнер панели управления */
+  /* MOBILE VERSION - control panel container */
   @media (max-width: 769px) {
     position: fixed;
     bottom: 0;
@@ -142,8 +125,6 @@ const AsideContainer = styled.div`
     padding: 20px 5px;
     z-index: 10;
     justify-content: center;
-    /* border-top: 2px solid #333; - reverted */
-    /* box-shadow: 0 -5px 20px rgba(0, 255, 0, 0.3); - reverted */
   }
 `;
 
@@ -158,7 +139,7 @@ const StyledAside = styled.aside`
   align-items: center;
   gap: 10px;
 
-  /* МОБИЛЬНАЯ ВЕРСИЯ - панель с кнопками */
+  /* MOBILE VERSION - button panel */
   @media (max-width: 769px) {
     max-width: 100%;
     flex-direction: row;
@@ -251,7 +232,7 @@ const StyledDisplay = styled.div`
   width: 100%;
   box-sizing: border-box;
 
-  /* МОБИЛЬНАЯ ВЕРСИЯ - отображение информации (очки, уровень и т.д.) */
+  /* MOBILE VERSION - information display (score, level, etc.) */
   @media (max-width: 768px) {
     width: auto;
     min-width: 60px;
@@ -270,7 +251,7 @@ const StyledContainer = styled.div`
   width: 100%;
   box-sizing: border-box;
 
-  /* МОБИЛЬНАЯ ВЕРСИЯ - контейнер для Next блока */
+  /* MOBILE VERSION - container for Next block */
   @media (max-width: 768px) {
     width: 70px;
     height: 70px;
@@ -298,84 +279,102 @@ const Tetris = ({
 }) => {
   const initialTouch = useRef({ x: 0, y: 0 });
 
-  // Handle keypress events
+  // Handles keyboard input for game controls like pause, movement, rotation, and hard drop.
   const handleKeyDown = (e) => {
-    // Prevent default behavior for space key in any case
+    // Prevent default browser behavior for the space key (e.g., scrolling),
+    // regardless of game state, to ensure consistent behavior.
     if (e.keyCode === 32) {
       e.preventDefault();
     }
 
+    // If the game is over, no keyboard input should be processed.
     if (gameOver) return;
 
+    // Toggle pause when 'P' key (keyCode 80) is pressed.
     if (e.keyCode === 80) {
       pauseGame();
-      return;
+      return; // Exit early after toggling pause.
     }
 
+    // If the game is paused, only 'P' (to unpause, handled above) should be processed.
+    // Other inputs are ignored.
     if (isPaused) return;
 
-    // Prevent default behavior for other keys during gameplay
+    // Prevent default browser behavior for other gameplay keys (arrow keys)
+    // to avoid actions like scrolling the page.
     e.preventDefault();
 
     if (e.keyCode === 37) {
-      // Left arrow
+      // Left arrow: Move player left.
       movePlayer(-1);
     } else if (e.keyCode === 39) {
-      // Right arrow
+      // Right arrow: Move player right.
       movePlayer(1);
     } else if (e.keyCode === 40) {
-      // Down arrow
+      // Down arrow: Move player down (soft drop).
       dropPlayer();
     } else if (e.keyCode === 38) {
-      // Up arrow
+      // Up arrow: Rotate player's tetromino.
       rotatePlayer();
     } else if (e.keyCode === 32) {
-      // Space - Hard drop only if game is active
+      // Space bar: Perform hard drop if the game is active and not over.
+      // The initial e.preventDefault() at the top handles the space key.
       if (!gameOver) {
         hardDrop();
       }
     }
   };
 
-  // Add touch event handlers for sensor interactions
+  // Handles the start of a touch event, recording the initial touch position.
   const handleTouchStart = (e) => {
-    const touch = e.touches[0];
+    const touch = e.touches[0]; // Get the first touch point.
+    // Store the screen coordinates (clientX, clientY) of the initial touch.
     initialTouch.current = { x: touch.clientX, y: touch.clientY };
   };
 
+  // Handles the end of a touch event, determining if it was a swipe or a tap
+  // and triggering corresponding game actions.
   const handleTouchEnd = (e) => {
-    const touch = e.changedTouches[0];
+    const touch = e.changedTouches[0]; // Get the touch point at the end of the gesture.
+    // Calculate the difference in x and y coordinates from the start of the touch.
     const deltaX = touch.clientX - initialTouch.current.x;
     const deltaY = touch.clientY - initialTouch.current.y;
-    const absDeltaX = Math.abs(deltaX);
-    const absDeltaY = Math.abs(deltaY);
+    const absDeltaX = Math.abs(deltaX); // Absolute change in X
+    const absDeltaY = Math.abs(deltaY); // Absolute change in Y
 
-    // If swipe down is significant, trigger hard drop
+    // Detect a significant downward swipe for hard drop.
+    // The swipe is considered "down" if deltaY is positive.
+    // It's significant if absDeltaY is over 50 pixels and greater than horizontal movement.
     if (absDeltaY > 50 && absDeltaY > absDeltaX && deltaY > 0) {
       hardDrop();
-      return;
+      return; // Action handled, exit.
     }
 
-    // Otherwise, treat as a tap
-    const rect = e.currentTarget.getBoundingClientRect();
+    // If not a significant swipe, treat the gesture as a tap.
+    const rect = e.currentTarget.getBoundingClientRect(); // Get dimensions of the touchable area (StyledTetrisWrapper).
+    // Calculate tap position relative to the touchable area.
     const x = touch.clientX - rect.left;
     const y = touch.clientY - rect.top;
     const width = rect.width;
     const height = rect.height;
 
-    // If tap is on the top 10% of the screen, toggle pause
+    // If the tap is in the top 10% of the game area's height, toggle pause.
     if (y < height * 0.1) {
       pauseGame();
-      return;
+      return; // Action handled, exit.
     }
 
-    // Divide the screen horizontally into three regions
+    // Divide the game area horizontally into three regions for tap controls.
     if (x < width / 3) {
+      // Tap in the left third of the area: move player left.
       movePlayer(-1);
     } else if (x > (width * 2) / 3) {
+      // Tap in the right third of the area: move player right.
       movePlayer(1);
     } else {
-      // In center region, if tap in upper half, rotate; else, normal drop
+      // Tap in the center third of the area:
+      // If tap is in the upper half of this central region, rotate the tetromino.
+      // Otherwise (lower half), perform a soft drop.
       if (y < height / 2) {
         rotatePlayer();
       } else {
